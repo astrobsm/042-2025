@@ -46,7 +46,7 @@ const Registration = ({ onRegistered }) => {
     data.append('payment_type', currentFee.id);
     data.append('evidence', form.evidence);
     try {
-      const res = await fetch('/api/register', {
+      const res = await fetch(`${process.env.REACT_APP_API_URL}/api/register`, {
         method: 'POST',
         body: data,
       });

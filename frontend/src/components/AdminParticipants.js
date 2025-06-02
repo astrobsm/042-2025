@@ -6,7 +6,7 @@ const AdminParticipants = () => {
   const [error, setError] = useState('');
 
   React.useEffect(() => {
-    fetch('/api/delegates')
+    fetch(`${process.env.REACT_APP_API_URL}/api/delegates`)
       .then(res => res.json())
       .then(data => {
         setParticipants(data);
@@ -45,7 +45,7 @@ const AdminParticipants = () => {
                 <td style={{padding:'0.6rem'}}>{p.registered_at ? new Date(p.registered_at).toLocaleString() : ''}</td>
                 <td style={{padding:'0.6rem'}}>
                   {p.evidence_filename ? (
-                    <a href={`/uploads/${p.evidence_filename}`} target="_blank" rel="noopener noreferrer" style={{color:'#28a745', fontWeight:700}}>View</a>
+                    <a href={`${process.env.REACT_APP_API_URL}/uploads/${p.evidence_filename}`} target="_blank" rel="noopener noreferrer" style={{color:'#28a745', fontWeight:700}}>View</a>
                   ) : 'N/A'}
                 </td>
               </tr>
